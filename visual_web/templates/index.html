@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8">
+    <title>공기질 모니터링</title>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'pm10', 'pm25'],
+            {% for i in all_items %}
+            ['{{ i.dataTime }}', {{ i.pm10Value }}, {{ i.pm25Value }}],
+            {% endfor %}
+
+        ]);
+
+        var options = {
+          title: '청계동 미세먼지',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+
+
+
+  </head>
+
+
+  <body>
+    <h1>장고 데이터 시각화 대시보드 웹</h1>
+    <p>데이터 출처</p>
+    <p>한국환경공단_대기오염정보</p>
+
+
+    <div id="curve_chart" style="width: 1500px; height: 500px"></div>
+
+
+
+  </body>
+</html>

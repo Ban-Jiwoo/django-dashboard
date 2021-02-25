@@ -1,0 +1,17 @@
+우선, 목표는 장고에 저장한 데이터를 시각화 하는 웹을 개발할 것이다.
+데이터는 openApi를 활용, 청계동 지역 미세먼지 데이터를 시각화 할것이다.
+
+데이터를 저장할 기능을 담당하는 parsed_data 라는 앱을 만든다.
+앱을 추가한다.
+python manage.py migrate Django에서 사용하는 기본적인 DB가 생성됩니다
+이제 DB구조를 관리해주는 Model을 만들어 줘야 합니다.
+Django에서 모델은 앱 단위로 만들어지고 구성됩니다. 따라서 앞서 만들어준 parsed_data앱 안의 models.py파일을 수정해줘야 합니다.
+이 모델 파일은 크롤링해온 데이터를 필드별로 저장하는 것이 목적입니다. 따라서 크롤링한 데이터를 파이썬이 관리할 수 있는 객체로 만들어두는 것이 중요합니다.
+
+
+
+
+
+이제 해야 할 일은 Django가 모델을 관리하도록 하려면 makemigrations를 통해 DB의 변경 정보를 정리하고, migrate를 통해 실제 DB에 반영하는 과정을 진행해야 합니다.
+python manage.py makemigrations parsed_data
+python manage.py migrate parsed_data

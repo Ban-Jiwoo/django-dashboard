@@ -17,3 +17,8 @@ Django에서 모델은 앱 단위로 만들어지고 구성됩니다. 따라서 
 python manage.py makemigrations parsed_data
 python manage.py migrate parsed_data
 터미널에서 위 코드를 실행시킨다. 
+
+git pull 
+git add --all
+git commit -m 'commit'
+git push

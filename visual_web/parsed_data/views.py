@@ -2,10 +2,18 @@ from django.shortcuts import render
 from .models import AirChartDb
 import pandas as pd
 import json
+from datetime import datetime
 
 def home(request):
     #데이터베이스는 최근 날짜가 가장 위에 있기때문에 불러와서 오름차순으로 정렬하면 된다.
+
     all_items = AirChartDb.objects.all().order_by('dataTime')
+
+
+    # for i in all_items:
+    #     = all_items.dataTime.strftime('%Y-%m-%d %H')
+        # i.dataTime = datetime.strptime(dateString, '%Y-%m-%d %H')
+    # all_items.dataTime = all_items.dt.strftime('%Y-%m-%d %H:')
 
     # for i in all_items:
         # date.append(i.dataTime)
